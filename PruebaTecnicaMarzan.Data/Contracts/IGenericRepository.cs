@@ -8,7 +8,7 @@ namespace PruebaTecnicaMarzan.Data.Contracts
     public interface IGenericRepository<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> GetByIDAsync(int id);
+        Task<T> GetByIdAsync(int id);
         Task<bool> CreateAsync(T entity);
         Task<bool> EditAsync(T entity);
         Task<bool> RemoveAsync(T entity);
