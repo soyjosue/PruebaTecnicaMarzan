@@ -11,6 +11,7 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
+    background-color: #264653;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -82,40 +83,6 @@ h2 {
     .input-tel {
         outline: none !important;
     }
-
-/* Remember me / Terms */
-.form .terms, .form .remember-me {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.form .remember-me {
-    margin-bottom: 2rem;
-}
-
-.form .terms p {
-    margin-top: 0;
-}
-
-.form .terms input[type="checkbox"], .form .remember-me input[type="checkbox"] {
-    margin-right: 1rem;
-}
-
-.form a {
-    color: #264653;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.form .remember-me label {
-    font-size: 1.3rem;
-    margin: 0;
-}
-
-.form .terms label {
-    font-size: 1.3rem;
-}
 
 /* ----- Register / Login button ----- */
 .form button {
