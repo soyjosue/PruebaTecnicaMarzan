@@ -1,0 +1,49 @@
+﻿@using PruebaTecnicaMarzan.Models
+
+@model Customer
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1 class="text-center text-capitalize">Editar Cliente</h1>
+<hr />
+<div class="row">
+    <div class="col">
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <label class="text-danger">
+                @ViewData["ErrorMessage"]
+            </label>
+        }
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="Guardar" class="btn btn-success w-100" />
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary w-100" asp-action="Index">Ir a la lista</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
