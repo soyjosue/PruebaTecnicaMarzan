@@ -9,12 +9,12 @@ namespace PruebaTecnicaMarzan.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [Required(ErrorMessage = "El correo es obligatorio.")]
+        [Required(ErrorMessage = "El nombre es obligatorio.")]
+        public string Nombre { get; set; }
+        [Required(ErrorMessage = "La contrase es obligatoria.")]
         public string Email { get; set; }
         [Required(ErrorMessage = "La contrase es obligatoria.")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "El rol es obligatorio.")]
-        public int Role { get; set; }
         [Required(ErrorMessage = "La fecha de creación es obligatoria.")]
         public DateTime CreatedAt { get; set; }
     }

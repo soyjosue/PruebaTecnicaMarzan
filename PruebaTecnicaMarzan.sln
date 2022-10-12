@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnicaMarzan.Data", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnicaMarzan.ViewModels", "PruebaTecnicaMarzan.Dtos\PruebaTecnicaMarzan.ViewModels.csproj", "{7F623738-D5F4-41DA-8089-75C45138DABF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnicaMarzan.Utils", "PruebaTecnicaMarzan.Utils\PruebaTecnicaMarzan.Utils.csproj", "{BDFF1A97-DBF0-4ABE-AEE1-335AA7F1A409}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7F623738-D5F4-41DA-8089-75C45138DABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F623738-D5F4-41DA-8089-75C45138DABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F623738-D5F4-41DA-8089-75C45138DABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDFF1A97-DBF0-4ABE-AEE1-335AA7F1A409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFF1A97-DBF0-4ABE-AEE1-335AA7F1A409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFF1A97-DBF0-4ABE-AEE1-335AA7F1A409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFF1A97-DBF0-4ABE-AEE1-335AA7F1A409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

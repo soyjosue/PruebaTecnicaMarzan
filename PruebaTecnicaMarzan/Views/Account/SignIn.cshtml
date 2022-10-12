@@ -16,6 +16,7 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+            <span class="text-danger d-block">@ViewData["ErrorMessage"]</span>
             <span asp-validation-for="Email" class="text-danger d-block"></span>
             <span asp-validation-for="Password" class="text-danger d-block"></span>
 

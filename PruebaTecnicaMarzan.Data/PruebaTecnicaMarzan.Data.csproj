@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PruebaTecnicaMarzan.Models\PruebaTecnicaMarzan.Models.csproj" />
+    <ProjectReference Include="..\PruebaTecnicaMarzan.Utils\PruebaTecnicaMarzan.Utils.csproj" />
   </ItemGroup>
 
 </Project>

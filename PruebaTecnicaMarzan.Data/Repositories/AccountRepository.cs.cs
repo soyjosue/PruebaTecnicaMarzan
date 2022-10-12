@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace PruebaTecnicaMarzan.Data.Repositories
 {
-    public class AccountRepositroy : IAccountRepository
+    public class AccountRepository : IAccountRepository
     {
         readonly PTMContext _context;
 
         readonly DbSet<Account> _accounts;
-        public AccountRepositroy(PTMContext pTMContext)
+        public AccountRepository(PTMContext pTMContext)
         {
             _context = pTMContext;
             _accounts = _context.Set<Account>();
@@ -55,7 +55,6 @@ namespace PruebaTecnicaMarzan.Data.Repositories
                     _accounts.Attach(entity);
                     _context.Entry(entity).Property(i => i.Password).IsModified = true;
                     _context.Entry(entity).Property(i => i.Email).IsModified = true;
-                    _context.Entry(entity).Property(i => i.Role).IsModified = true;
 
                     result = await _context.SaveChangesAsync() > 0;
 
