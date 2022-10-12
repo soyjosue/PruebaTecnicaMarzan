@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PruebaTecnicaMarzan.Models\PruebaTecnicaMarzan.Model.csproj" />
+    <ProjectReference Include="..\PruebaTecnicaMarzan.Models\PruebaTecnicaMarzan.Models.csproj" />
   </ItemGroup>
 
 </Project>

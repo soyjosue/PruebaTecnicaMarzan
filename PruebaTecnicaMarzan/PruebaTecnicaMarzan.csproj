@@ -12,4 +12,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PruebaTecnicaMarzan.Data\PruebaTecnicaMarzan.Data.csproj" />
+    <ProjectReference Include="..\PruebaTecnicaMarzan.Dtos\PruebaTecnicaMarzan.ViewModels.csproj" />
+    <ProjectReference Include="..\PruebaTecnicaMarzan.Models\PruebaTecnicaMarzan.Models.csproj" />
+  </ItemGroup>
+
 </Project>
