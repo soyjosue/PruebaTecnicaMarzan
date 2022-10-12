@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.30">
@@ -18,6 +19,10 @@
     <ProjectReference Include="..\PruebaTecnicaMarzan.Data\PruebaTecnicaMarzan.Data.csproj" />
     <ProjectReference Include="..\PruebaTecnicaMarzan.Dtos\PruebaTecnicaMarzan.ViewModels.csproj" />
     <ProjectReference Include="..\PruebaTecnicaMarzan.Models\PruebaTecnicaMarzan.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Profiles\" />
   </ItemGroup>
 
 </Project>
