@@ -65,6 +65,7 @@ namespace PruebaTecnicaMarzan
 
             services.AddDbContext<PTMContext>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
