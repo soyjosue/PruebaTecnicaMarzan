@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using PruebaTecnicaMarzan.Data.Contracts;
 using PruebaTecnicaMarzan.Models;
 using System;
@@ -71,10 +72,13 @@ namespace PruebaTecnicaMarzan.Data.Repositories
         }
 
         public async Task<IEnumerable<Order>> GetAllAsync()
-        => await _orders.ToListAsync();
+        => await _orders.Include(i => i.Customer).Include(i => i.OrderDetails).ThenInclude(i => i.Product).ToListAsync();
 
         public async Task<Order> GetByIdAsync(int id)
-        => await _orders.FirstOrDefaultAsync(i => i.ID == id);
+        => await _orders.Include(i => i.Customer)
+                        .Include(i => i.OrderDetails)
+            .ThenInclude(i => i.Product)
+                        .FirstOrDefaultAsync(i => i.ID == id);
 
         public async Task<bool> RemoveAsync(Order entity)
         {

@@ -78,6 +78,14 @@ namespace PruebaTecnicaMarzan.Controllers
             }
         }
 
+        [Authorize]
+        public IActionResult LogOut()
+        {
+            Response.Cookies.Delete("X-Access-Token");
+
+            return RedirectToAction(nameof(SignIn));
+        }
+
         private string GenerateJSONWebToken(Account account)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

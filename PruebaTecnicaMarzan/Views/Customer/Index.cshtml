@@ -11,6 +11,18 @@
 <p>
     <a class="btn btn-success w-100" asp-action="Create">Crear Nuevo</a>
 </p>
+
+<form asp-action="Index">
+    <div class="row mb-3">
+        <div class="col">
+            <input class=form-control type="text" name="SearchText" placeholder="Buscar por Nombre" />
+        </div>
+        <div class="col">
+            <input class="btn btn-primary w-100" type="submit" value="Buscar" />
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead class="thead-dark">
         <tr>

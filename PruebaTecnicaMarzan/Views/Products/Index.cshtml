@@ -10,6 +10,18 @@
 <p>
     <a class="btn btn-success w-100" asp-action="Create">Crear Nuevo</a>
 </p>
+
+<form asp-action="Index">
+    <div class="row mb-3">
+        <div class="col">
+            <input class=form-control type="text" name="SearchText" placeholder="Buscar por Nombre" />
+        </div>
+        <div class="col">
+            <input class="btn btn-primary w-100" type="submit" value="Buscar" />
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -17,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th class="text-center">
                 @Html.DisplayNameFor(model => model.CreatedAt)
@@ -35,7 +47,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td class="text-center">
-                    $@Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.CreatedAt)

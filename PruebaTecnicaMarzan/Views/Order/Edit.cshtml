@@ -1,0 +1,112 @@
+﻿@model OrderCreateViewModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1 class="text-center text-capitalize">Editar Orden</h1>
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Edit">
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <label class="text-danger">
+                    @ViewData["ErrorMessage"]
+                </label>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Order.ID" class="control-label font-weight-bold"></label>
+                        <input asp-for="Order.ID" class="form-control" readonly />
+                        <span asp-validation-for="Order.ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Order.CustomerID" class="control-label font-weight-bold"></label>
+                        <select asp-for="Order.CustomerID" asp-items="@Model.Customers" class="form-control">
+                        </select>
+                        <span asp-validation-for="Order.CustomerID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Order.CreatedAt" class="control-label"></label>
+                        <input asp-for="Order.CreatedAt" class="form-control" />
+                        <span asp-validation-for="Order.CreatedAt" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-center text-capitalize">Detalles</h2>
+            <hr />
+
+            <button type="button" class="btn btn-primary w-100" onclick="AddItem(this)">Agregar</button>
+
+            <table class="table" id="ExpTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Producto
+                        </th>
+                        <th>
+                            Precio
+                        </th>
+                        <th>
+                            Cantidad
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.OrderDetails.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select asp-for="OrderDetails[i].ProductID" asp-items="@Model.Products" class="form-control">
+                                    </select>
+                                    <span asp-validation-for="OrderDetails[i].ProductID" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                @Html.EditorFor(x => x.OrderDetails[i].Price, new { htmlAttributes = new { @class = "form-control"}})
+                                <span asp-validation-for="Order.CustomerID" class="text-danger"></span>
+                            </td>
+                            <td>
+                                @Html.EditorFor(x => x.OrderDetails[i].Amount, new { htmlAttributes = new { @class = "form-control"}})
+                                <span asp-validation-for="Order.CustomerID" class="text-danger"></span>
+                            </td>
+                            <td>
+                                <button id="btnremove-@i" type="button" class="btn btn-sm btn-danger" onclick="DeleteItem(this)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <input type="hidden" id="hdnLastIndex" value="0" />
+
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="Guardar" class="btn btn-success w-100" />
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary w-100" asp-action="Index">Ir a la lista</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/order.js"></script>
+    }
+

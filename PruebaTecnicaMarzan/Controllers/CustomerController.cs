@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaMarzan.Data.Contracts;
+using PruebaTecnicaMarzan.Data.Repositories;
 using PruebaTecnicaMarzan.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PruebaTecnicaMarzan.Controllers
@@ -15,9 +17,16 @@ namespace PruebaTecnicaMarzan.Controllers
             _customerRepository = customerRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchText)
         {
-            return View(await _customerRepository.GetAllAsync());
+            var customers = await _customerRepository.GetAllAsync();
+
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                customers = customers.Where(i => i.Name.Contains(SearchText) || i.ID.ToString() == SearchText);
+            }
+
+            return View(customers);
         }
 
         public IActionResult Create()

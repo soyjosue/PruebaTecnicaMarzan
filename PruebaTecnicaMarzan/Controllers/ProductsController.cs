@@ -22,9 +22,16 @@ namespace PruebaTecnicaMarzan.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchText)
         {
-            return View(await _context.Products.ToListAsync());
+            var products = await _context.Products.ToListAsync();
+
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                products = products.Where(i => i.Name.Contains(SearchText)).ToList();
+            }
+
+            return View(products);
         }
 
         // GET: Products/Details/5
@@ -56,7 +63,7 @@ namespace PruebaTecnicaMarzan.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Price,CreatedAt")] Product product)
+        public async Task<IActionResult> Create([Bind("ID,Name,Description,CreatedAt")] Product product)
         {
             product.CreatedAt = DateTime.Now;
             if (ModelState.IsValid)
@@ -89,7 +96,7 @@ namespace PruebaTecnicaMarzan.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Price,CreatedAt")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Description,CreatedAt")] Product product)
         {
             if (id != product.ID)
             {

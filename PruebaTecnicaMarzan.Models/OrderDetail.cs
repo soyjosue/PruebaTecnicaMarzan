@@ -19,5 +19,10 @@ namespace PruebaTecnicaMarzan.Models
         public float Amount { get; set; }
         [Required(ErrorMessage = "La fecha de creación es obligatoria.")]
         public DateTime CreatedAt { get; set; }
+
+        [ForeignKey("ProductID")]
+        public Product Product { get; set; }
+        [ForeignKey("OrderID")]
+        public Order Order { get; set; }
     }
 }

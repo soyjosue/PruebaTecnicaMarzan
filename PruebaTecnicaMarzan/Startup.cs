@@ -36,6 +36,8 @@ namespace PruebaTecnicaMarzan
         {
             services.AddControllersWithViews();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
                     {
@@ -67,6 +69,7 @@ namespace PruebaTecnicaMarzan
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,7 +96,11 @@ namespace PruebaTecnicaMarzan
 
                 if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
                         response.StatusCode == (int)HttpStatusCode.Forbidden)
+                {
+                    response.Cookies.Delete("X-Access-Token");
                     response.Redirect("/Account/SignIn");
+                }
+                    
             });
 
 

@@ -1,6 +1,6 @@
-﻿@using PruebaTecnicaMarzan.Models
+﻿@using PruebaTecnicaMarzan.ViewModels
 
-@model List<OrderViewModel>
+@model IEnumerable<OrderViewModel>
 
 @{
     ViewData["Title"] = "Inicio";
@@ -9,16 +9,46 @@
 <h1 class="text-center text-capitalize">Ordenes</h1>
 
 <p>
-    <a class="btn btn-success w-100" asp-action="Create">Crear Nueva</a>
+    <button class="btn btn-success w-100" id="createOrder" data-toggle="modal" data-target="#modalCreate">Crear Nueva</button>
 </p>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-5" id="modal-content">
+            Cargando...
+        </div>
+    </div>
+</div>
+
+<form asp-action="Index">
+    <div class="row mb-3">
+        <div class="col">
+            <input class=form-control type="text" name="SearchText" placeholder="Buscar por Cliente o Identificador" />
+        </div>
+        <div class="col">
+            <input class="btn btn-primary w-100" type="submit" value="Buscar" />
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead class="thead-dark">
         <tr>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Cantidad)
             </th>
             <th class="text-center">
                 @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th class="text-center">
+                Productos
             </th>
             <th class="text-center">
                 Acciones
@@ -30,11 +60,53 @@
         {
             <tr>
                 <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Customer)
+                </td>
+                <td class="text-center">
+                    $@Html.DisplayFor(modelItem => item.Cantidad)
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.CreatedAt)
                 </td>
+
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Producto
+                                </th>
+                                <th class="text-center">
+                                    Precio
+                                </th>
+                                <th class="text-center">
+                                    Cantidad
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var details in item.OrderDetails)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => details.Product)
+                                    </td>
+                                    <td class="text-center">
+                                        $@Html.DisplayFor(modelItem => details.Price)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => details.Amount)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </td>
+
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.ID">Editar</a>
@@ -42,7 +114,12 @@
                         <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ID">Eliminar</a>
                     </div>
                 </td>
+
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/js/order.js"></script>
+                    }

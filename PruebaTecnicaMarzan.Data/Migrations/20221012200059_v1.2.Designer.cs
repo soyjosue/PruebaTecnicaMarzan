@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PruebaTecnicaMarzan.Data;
 
 namespace PruebaTecnicaMarzan.Data.Migrations
 {
     [DbContext(typeof(PTMContext))]
-    partial class PTMContextModelSnapshot : ModelSnapshot
+    [Migration("20221012200059_v1.2")]
+    partial class v12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,40 +46,6 @@ namespace PruebaTecnicaMarzan.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 4,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "hmarzan@marzanconsulting.com",
-                            Nombre = "Marzan",
-                            Password = "new"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "jrguzman@marzanconsulting.com",
-                            Nombre = "Guzman",
-                            Password = "new"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "jherrera@marzanconsulting.com",
-                            Nombre = "Herrera",
-                            Password = "new"
-                        },
-                        new
-                        {
-                            ID = 1,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "einoa04@gmail.com",
-                            Nombre = "Inoa",
-                            Password = "new"
-                        });
                 });
 
             modelBuilder.Entity("PruebaTecnicaMarzan.Models.Customer", b =>

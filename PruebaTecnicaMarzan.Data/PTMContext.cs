@@ -19,5 +19,55 @@ namespace PruebaTecnicaMarzan.Data
         {
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=PTMDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            #region Data Seed
+            modelBuilder.Entity<Account>()
+                        .HasData
+            (
+                new Account
+                {
+                    ID = 0,
+                    Nombre = "Marzan",
+                    Email = "hmarzan@marzanconsulting.com",
+                    Password = "new"
+                }
+            );
+            modelBuilder.Entity<Account>()
+                        .HasData
+            (
+                new Account
+                {
+                    ID = 0,
+                    Nombre = "Guzman",
+                    Email = "jrguzman@marzanconsulting.com",
+                    Password = "new"
+                }
+            );
+            modelBuilder.Entity<Account>()
+                        .HasData
+            (
+                new Account
+                {
+                    ID = 0,
+                    Nombre = "Herrera",
+                    Email = "jherrera@marzanconsulting.com",
+                    Password = "new"
+                }
+            );
+            modelBuilder.Entity<Account>()
+                        .HasData
+            (
+                new Account
+                {
+                    ID = 0,
+                    Nombre = "Inoa",
+                    Email = "einoa04@gmail.com",
+                    Password = "new"
+                }
+            );
+            #endregion
+        }
     }
 }
